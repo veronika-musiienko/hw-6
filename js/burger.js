@@ -1,4 +1,6 @@
 (() => {
+  let isOpen = false;
+
     const refs = {
       // Додати атрибут data-modal-open на кнопку відкриття
       openModalBtn: document.querySelector("[data-burger-open]"),
@@ -12,7 +14,14 @@
     refs.closeModalBtn.addEventListener("click", toggleModal);
   
     function toggleModal() {
+      isOpen = !isOpen;
+      if(isOpen){
+        document.body.style.overflow = 'hidden'
+        refs.modal.classList.add("is-open-burger");
+      }else{
+        document.body.style.overflow = 'auto'
+        refs.modal.classList.remove("is-open-burger");
+      }
       // is-open це клас який буде додаватися/забиратися на бекдроп при натисканні на кнопки
-      refs.modal.classList.toggle("is-open-burger");
     }
   })();
